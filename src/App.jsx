@@ -3,9 +3,10 @@ import { Routes, Route } from "react-router";
 import Navbar from "./components/shared/Navbar/Navbar";
 import Footer from "./components/shared/Footer/Footer";
 
-import Banner from "./pages/Home/Banner";
+import Home from "./pages/Home/Home";
 import About from "./pages/Home/About";
 import Contact from "./pages/Home/Contact";
+import Category from "./pages/Category/Category";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
 
       <main className="m-0 p-0">
         <Routes>
-          <Route path="/" element={<Banner />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/category" element={<Category />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
