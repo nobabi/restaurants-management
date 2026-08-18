@@ -1,0 +1,43 @@
+.rectangle-section {
+  width: 100%;
+  min-height: 390px;
+
+  background-image: url("../../assets/home/chef-service.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 50px 20px;
+}
+
+.rectangle-content {
+  width: 80%;
+  max-width: 1000px;
+
+  background-color: #ffffff;
+
+  text-align: center;
+
+  padding: 65px 100px;
+}
+
+.rectangle-content h2 {
+  font-family: serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 1px;
+
+  margin: 0 0 10px;
+}
+
+.rectangle-content p {
+  max-width: 650px;
+  margin: 0 auto;
+
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333;
+}

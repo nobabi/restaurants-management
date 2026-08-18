@@ -1,0 +1,89 @@
+.popular-menu {
+  width: 100%;
+  background: #fff;
+  padding: 30px 5% 20px;
+}
+
+.popular-menu-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 45px;
+}
+
+.food-item {
+  display: flex;
+  gap: 20px;
+}
+
+.food-img {
+  width: 80px;
+  height: 70px;
+  background: #d9d9d9;
+
+  flex-shrink: 0;
+
+  border-radius: 0 35px 35px 35px;
+}
+
+.food-content {
+  flex: 1;
+}
+
+.food-heading {
+  display: flex;
+  align-items: center;
+}
+
+.food-heading h3 {
+  margin: 5px 0;
+
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: 400;
+
+  color: #333;
+  white-space: nowrap;
+}
+
+.food-line {
+  flex: 1;
+
+  border-bottom: 1px dashed #777;
+
+  margin: 0 8px;
+}
+
+.food-heading span {
+  color: #c78a00;
+  font-size: 14px;
+}
+
+.food-content p {
+  margin: 0;
+
+  color: #777;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.view-menu {
+  display: block;
+
+  margin: 45px auto 0;
+
+  padding: 0 20px 10px;
+
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #172333;
+  border-radius: 0 0 15px 15px;
+
+  color: #172333;
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.view-menu:hover {
+  color: #c78a00;
+}
