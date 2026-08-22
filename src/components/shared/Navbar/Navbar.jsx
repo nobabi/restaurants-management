@@ -1,51 +1,69 @@
 import { Link } from "react-router";
 
 function Navbar() {
-  const nvaOptions = (
+  const navOptions = (
     <>
       <li>
-        <button>Item 1</button>
+        <Link to="/">HOME</Link>
+      </li>
+
+       <li>
+  <details>
+    <summary>OUR MENU</summary>
+
+    <ul>
+      <li>
+        <Link to="/menu">All Menu</Link>
       </li>
 
       <li>
-        <details>
-          <summary>Parent</summary>
+        <Link to="/menu/salads">Salads</Link>
+      </li>
 
-          <ul className="p-2 bg-base-100 w-40 z-10">
+      <li>
+        <Link to="/menu/pizza">Pizza</Link>
+      </li>
+    </ul>
+  </details>
+</li>
+
+      <li>
+        <details>
+          <summary>OUR SHOP</summary>
+
+          <ul className="bg-base-100 rounded-box p-2 w-40 z-50">
             <li>
-              <button>Submenu 1</button>
+              <Link to="/shop">Shop</Link>
             </li>
+
             <li>
-              <button>Submenu 2</button>
+              <Link to="/cart">Cart</Link>
             </li>
           </ul>
         </details>
       </li>
 
       <li>
-        <button>Item 3</button>
+        <Link to="/about">ABOUT</Link>
+      </li>
+
+      <li>
+        <Link to="/contact">CONTACT</Link>
       </li>
     </>
   );
 
   return (
-    <div className="max-lg:collapse bg-base-200 shadow-sm w-full rounded-md">
-      <input
-        id="navbar-1-toggle"
-        className="peer hidden"
-        type="checkbox"
-      />
+    <div className="navbar bg-base-200 shadow-sm w-full">
 
-      <label
-        htmlFor="navbar-1-toggle"
-        className="fixed inset-0 hidden max-lg:peer-checked:block"
-      ></label>
+      {/* Mobile Menu */}
+      <div className="navbar-start">
 
-      <div className="collapse-title navbar">
-        <div className="navbar-start">
-          <label
-            htmlFor="navbar-1-toggle"
-            className="btn btn-ghost lg:hidden"
+        <div className="dropdown lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,33 +79,43 @@ function Navbar() {
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
-          </label>
+          </div>
 
-          <button className="btn btn-ghost text-xl">
-            Bistro Boss
-          </button>
-        </div>
-
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {nvaOptions}
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          >
+            {navOptions}
           </ul>
         </div>
 
-        <div className="navbar-end">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input w-64 lg:w-auto"
-          />
-        </div>
+        {/* Logo */}
+        <Link
+          to="/"
+          className="btn btn-ghost text-xl"
+        >
+          Bistro Boss
+        </Link>
       </div>
 
-      <div className="collapse-content lg:hidden z-10">
-        <ul className="menu">
-          {nvaOptions}
+      {/* Desktop Menu */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          {navOptions}
         </ul>
       </div>
+
+      {/* Right Side */}
+      <div className="navbar-end">
+
+        <input
+          type="text"
+          placeholder="Search"
+          className="input w-40 lg:w-64"
+        />
+
+      </div>
+
     </div>
   );
 }

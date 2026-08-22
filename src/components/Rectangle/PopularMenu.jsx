@@ -1,54 +1,63 @@
+import { useEffect, useState } from "react";
 import "./PopularMenu.css";
 
-const menuItems = [
-  {
-    name: "ROAST DUCK BREAST",
-    price: "$14.5",
-  },
-  {
-    name: "TUNA NICOISE",
-    price: "$14.5",
-  },
-  {
-    name: "ESCALOPE DE VEAU",
-    price: "$14.5",
-  },
-  {
-    name: "CHICKEN AND WALNUT SALAD",
-    price: "$14.5",
-  },
-  {
-    name: "FISH PARMENTIER",
-    price: "$14.5",
-  },
-  {
-    name: "ROASTED PORK BELLY",
-    price: "$14.5",
-  },
-];
-
 const PopularMenu = () => {
+  const [menuItems, setMenuItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("/menu.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to load menu.json");
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        const popularItems = data.filter(
+          (item) => item.category === "popular"
+        );
+
+        setMenuItems(popularItems);
+      })
+      .catch((error) => {
+        console.error("Error fetching menu:", error);
+        setError("Failed to load popular menu.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p>Loading popular menu...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <section className="popular-menu">
       <div className="popular-menu-container">
-        {menuItems.map((item, index) => (
-          <div className="food-item" key={index}>
-            <div className="food-img"></div>
+        {menuItems.map((item) => (
+          <div className="food-item" key={item._id}>
+            <div className="food-img">
+              <img src={item.image} alt={item.name} />
+            </div>
 
             <div className="food-content">
               <div className="food-heading">
-                <h3>{item.name}</h3>
+                <h3>{item.name.toUpperCase()}</h3>
 
                 <div className="food-line"></div>
 
-                <span>{item.price}</span>
+                <span>${item.price}</span>
               </div>
 
-              <p>
-                Roasted duck breast (served pink) with gratin potato and
-                <br />
-                a griotine cherry sauce
-              </p>
+              <p>{item.recipe}</p>
             </div>
           </div>
         ))}
