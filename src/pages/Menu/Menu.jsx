@@ -3,10 +3,27 @@ import "./Menu.css";
 import { Helmet } from "react-helmet-async";
 import meunImage from '../../assets/menu/banner3.jpg'
 import PopularMenu from "../../components/Rectangle/PopularMenu";
+import useMenu from "../../hooks/useMenu";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
  
  
 const Menu = () => {
    
+  const { menuItems, loading, error } = useMenu();
+
+  if (loading) {
+    return <p>Loading menu...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  const dessert = menuItems.filter(item => item.category === "dessert");
+  const soup = menuItems.filter(item => item.category === "soup");
+  const salad = menuItems.filter(item => item.category === "salad");
+  const pizza = menuItems.filter(item => item.category === "pizza");
+  const offered = menuItems.filter(item => item.category === "offered");
 
   return (
     <>
@@ -20,11 +37,9 @@ const Menu = () => {
       </Helmet>
 
       <Cover img={meunImage} title="Our Menu"></Cover>
-      <PopularMenu></PopularMenu>
-      <Cover img={meunImage} title="Our Menu"></Cover>
-      <PopularMenu></PopularMenu>
-      <Cover img={meunImage} title="Our Menu"></Cover>
-      <PopularMenu></PopularMenu>
+      <SectionTitle subHeading="Don't Miss" heading="Today's offer"></SectionTitle>
+     
+    
     </>
   );
 };

@@ -1,48 +1,26 @@
-import { useEffect, useState } from "react";
 import "./PopularMenu.css";
+import useMenu from "../../hooks/useMenu";
 
 const PopularMenu = () => {
-  const [menuItems, setMenuItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetch("/menu.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to load menu.json");
-        }
-
-        return response.json();
-      })
-      .then((data) => {
-        const popularItems = data.filter(
-          (item) => item.category === "popular"
-        );
-
-        setMenuItems(popularItems);
-      })
-      .catch((error) => {
-        console.error("Error fetching menu:", error);
-        setError("Failed to load popular menu.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  const { menuItems, loading, error } = useMenu();
 
   if (loading) {
-    return <p>Loading popular menu...</p>;
+    return <p>Loading menu...</p>;
   }
 
   if (error) {
     return <p>{error}</p>;
   }
 
+  const popular = menuItems.filter(
+    item => item.category === "popular"
+  );
+
   return (
     <section className="popular-menu">
       <div className="popular-menu-container">
-        {menuItems.map((item) => (
+        {popular.map((item) => (
           <div className="food-item" key={item._id}>
             <div className="food-img">
               <img src={item.image} alt={item.name} />
