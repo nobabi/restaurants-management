@@ -3,7 +3,6 @@ import Category from "../Category/Category";
 import Rectangle from "../../components/Rectangle/Rectangle";
 import PopularMenu from "../../components/Rectangle/PopularMenu";
 import CallUs from "../../components/Rectangle/CallUs";
-import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import ChefRecommendations from "../../components/SectionTitle/ChefRecommendations";
 import ChefRecommends from "../../components/Rectangle/ChefRecommends";
 import FromOurMenu from "../../components/Rectangle/FromOurMenu";

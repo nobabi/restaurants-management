@@ -8,6 +8,7 @@ import Menu from "./pages/Menu/Menu";
 import About from "./pages/Home/About";
 import Contact from "./pages/Home/Contact";
 import Category from "./pages/Category/Category";
+import OrderFood from "./pages/OrderFood/OrderFood";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/menu" element={<Menu />} />
 
           <Route path="/category" element={<Category />} />
+          <Route path="/Orderfood" element={<OrderFood />} />
 
           <Route path="/about" element={<About />} />
 

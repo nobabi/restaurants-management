@@ -5,9 +5,18 @@ function Navbar() {
     <>
       <li>
         <Link to="/">HOME</Link>
+         
+      </li>
+    <li>
+        <Link to="/menu">  Menu</Link>
+         
+      </li>
+         <li>
+        <Link to="/Orderfood">  Order Food</Link>
+         
       </li>
 
-       <li>
+       {/* <li>
   <details>
     <summary><Link to="/menu">  Menu</Link></summary>
 
@@ -25,9 +34,9 @@ function Navbar() {
       </li>
     </ul>
   </details>
-</li>
+</li> */}
 
-      <li>
+      {/* <li>
         <details>
           <summary>OUR SHOP</summary>
 
@@ -41,7 +50,7 @@ function Navbar() {
             </li>
           </ul>
         </details>
-      </li>
+      </li> */}
 
       <li>
         <Link to="/about">ABOUT</Link>
