@@ -5,7 +5,7 @@ const ChefRecommends = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/menu.json")
+    fetch('http://localhost:5000/menu')  // Fetch data from the backend server
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to load menu");

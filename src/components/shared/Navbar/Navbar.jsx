@@ -12,7 +12,7 @@ function Navbar() {
          
       </li>
          <li>
-        <Link to="/Orderfood">  Order Food</Link>
+        <Link to="/Orderfood/salads">  Order Food</Link>
          
       </li>
 
